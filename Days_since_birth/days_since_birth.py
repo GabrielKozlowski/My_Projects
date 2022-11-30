@@ -5,10 +5,6 @@ from datetime import datetime
 root = Tk()
 root.title('TIME SINCE BIRTH')
 
-
-
-
-
 def getBirthDate(birth):
 
     minutes = whatTime('minutes')
@@ -33,8 +29,6 @@ def getBirthDate(birth):
     daysBatton.grid(row=5,column=0)
     
     
-
-
 def whatTime(chose = 'days'):
     if chose == 'minutes':
         def minutes(birthDate,dateNow):  
