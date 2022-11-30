@@ -56,9 +56,6 @@ def whatTime(chose = 'days'):
         return days
 
 
-
-
-
 # Creating a label widget
 nameApp = Label(root, text="Check how long you exist in the world")
 nameApp.grid(row=0,column=1)
@@ -70,9 +67,6 @@ inputInfo.grid(row=1, column=0)
 # Create input
 inputBirthDate = Entry(root, width=25, borderwidth=5)
 inputBirthDate.grid(row=1,column=1)
-
-
-
 
 
 birthDate = inputBirthDate.get()
@@ -89,16 +83,8 @@ dateBatton.grid(row=1,column=2)
 root.mainloop()
 
 
-
-
 # #-----------------------------------------------------
 
-
-
-
-
-
-    
 # minutes = whatTime('minutes')
 # hours = whatTime('hours')
 # days = whatTime('days')
