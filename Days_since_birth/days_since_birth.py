@@ -82,7 +82,7 @@ dateBatton.grid(row=1,column=2)
 # Showing it onto the screen
 root.mainloop()
 
-
+git pull --rebase
 # #-----------------------------------------------------
 
 # minutes = whatTime('minutes')
