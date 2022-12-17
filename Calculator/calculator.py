@@ -4,7 +4,11 @@ from math import sqrt
 root = Tk()
 root.title('Calculator')
 
+<<<<<<< HEAD
 # root.maxsize(400, 600)
+=======
+
+>>>>>>> test
 root.minsize(400, 600)
 root.geometry('400x600')
 
@@ -290,5 +294,9 @@ sum_button.grid(row=7, column=3)
 
 
 
+<<<<<<< HEAD
 root.mainloop()
 print(stash_percent)
+=======
+root.mainloop()
+>>>>>>> test
