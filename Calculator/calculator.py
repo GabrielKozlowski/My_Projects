@@ -139,9 +139,13 @@ def ButtonPercent():
     current  = sum_result.get()
     sum_result.delete(0, END)
     if '.' not in current:
-        stash_percent.append(int(current * 0.01))
+        current = int(current)
+        stash_percent.append(current * 0.01)
+        sum_result.insert(0, current)
     else:
-        stash_percent.append(float(current * 0.01))
+        current = float(current)
+        stash_percent.append(current * 0.01)
+        sum_result.insert(0, current)
 
 
 
@@ -154,43 +158,69 @@ def ButtonSum():
         current = float(current)
     sum_result.delete(0, END)
 
-    if len(stash_add) > 0:
+    if len(stash_add) > 0 and len(stash_percent) == 0:
         score = stash_add.pop() + current
         if isinstance(score, int):
             sum_result.insert(0, int(score))
         else:
             sum_result.insert(0, float(score))  
-    elif len(stash_sustract) > 0:
+    elif len(stash_sustract) > 0 and len(stash_percent) == 0:
         score = stash_sustract.pop() - current
         if isinstance(score, int):
             sum_result.insert(0, int(score))
         else:
             sum_result.insert(0, float(score))
-    elif len(stash_divide) > 0:
+    elif len(stash_divide) > 0 and len(stash_percent) == 0:
         score = stash_divide.pop() / current
         if isinstance(score, int):
             sum_result.insert(0, int(score))
         else:
             sum_result.insert(0, float(score))
-    elif len(stash_multiplication) > 0:
+    elif len(stash_multiplication) > 0 and len(stash_percent) == 0:
         score = stash_multiplication.pop() * current
         if isinstance(score, int):
             sum_result.insert(0, int(score))
         else:
             sum_result.insert(0, float(score))
-    elif len(stash_percent) > 0 :        
-        score = stash_percent.pop() * current
-        if isinstance(score, int):
-            sum_result.insert(0, int(score))
-        else:
-            sum_result.insert(0, float(score))
+
+    elif len(stash_percent) > 0 :                        
+        if len(stash_add) > 0:
+            stash = stash_add.pop()
+            score = stash_percent.pop() * stash
+            value = stash + score   
+            if isinstance(value, int):
+                sum_result.insert(0, int(value))
+            else:
+                sum_result.insert(0, float(value))
+        elif len(stash_sustract) > 0:
+            stash = stash_sustract.pop()
+            score = stash_percent.pop() * stash
+            value = stash - score   
+            if isinstance(value, int):
+                sum_result.insert(0, int(value))
+            else:
+                sum_result.insert(0, float(value))
+        elif len(stash_divide) > 0:
+            stash = stash_divide.pop()
+            score = stash_percent.pop()
+            value = stash / score   
+            if isinstance(value, int):
+                sum_result.insert(0, int(value))
+            else:
+                sum_result.insert(0, float(value))
+        elif len(stash_multiplication) > 0:
+            stash = stash_multiplication.pop()
+            score = stash_percent.pop()
+            value = stash * score   
+            if isinstance(value, int):
+                sum_result.insert(0, int(value))
+            else:
+                sum_result.insert(0, float(value))
 
     else:
         sum_result.delete(0, END)
 
 
-
-        
 
 percent_button = Button(root, width=11, pady=15, text='%', command=lambda: ButtonPercent())
 ce_button = Button(root, width=11, pady=15, text='CE', command=lambda: ButtonDelete())
@@ -261,3 +291,4 @@ sum_button.grid(row=7, column=3)
 
 
 root.mainloop()
+print(stash_percent)
