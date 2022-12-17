@@ -7,31 +7,32 @@ root.title('TIME SINCE BIRTH')
 root.configure(bg='#66CDAA')
 
 def getBirthDate():
+    birthDate = '1000-10-10 10:10:10'
     #Save input in to variable
     birthDate = inputBirthDate.get()
     #Save label in to variable
-    errorLabel = Label(root,bg='#CD3333',fg='#000000', text='  ONLY (YYYY-MM-DD) value!  ')  
+    errorLabel = Label(root,bg='#CD3333',fg='#000000', text='ONLY (YYYY-MM-DD H:M:S) value!')  
     #Check if is good valiue input
     try:
-        birth = datetime.strptime(birthDate, '%Y-%m-%d').date()
+        birth = datetime.strptime(birthDate, '%Y-%m-%d %H:%M:%S')
     #Create errorlabel with error text
     except ValueError: 
         errorLabel.grid(row=3,column=1)  
           
     else:
         #Change errorlabel text 
-        errorLabel.config(bg='#66CDAA',fg='#030303',text="  You enter a correct value :D:D  ")
+        errorLabel.config(bg='#66CDAA',fg='#030303',text="    You enter a correct value :D:D    ")
         errorLabel.grid(row=3,column=1)
         #Clean input value
         inputBirthDate.delete(0, END)
         #Convert input value to datatime and save to variable
-        birth = datetime.strptime(birthDate, '%Y-%m-%d').date()
+        birth = datetime.strptime(birthDate, '%Y-%m-%d %H:%M:%S')
         #Create variables of def with value
         minutes = whatTime('minutes')
         hours = whatTime('hours')
         days = whatTime('days') 
         #Create variable with date today
-        dateNow = datetime.now().date()
+        dateNow = datetime.now()
 
         #Create label with added birth date
         birthDateLabel = Label(root,bg='#66CDAA', text="Your exact date of birth: {0}".format(birth))
@@ -89,7 +90,7 @@ nameApp = Label(root,bg='#66CDAA', text="Check how long you exist in the world")
 nameApp.grid(row=0,column=1)
 
  # Info for input
-inputInfo = Label(root,bg='#66CDAA', text="Enter you'r date of birth (YYYY-MM-DD)")
+inputInfo = Label(root,bg='#66CDAA', text="Enter you'r date of birth (YYYY-MM-DD H:M:S)")
 inputInfo.grid(row=1, column=0)
 
 # Create input
